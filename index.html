@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>ХАТА© — оренда в Одесі</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0097B2">
+<meta name="description" content="Оренда нерухомості м.Одеса — квартири, будинки та комерційна нерухомість.">
+<link rel="canonical" href="{{CANONICAL}}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ХАТА© — оренда в Одесі">
+<meta property="og:title" content="ХАТА© — оренда в Одесі">
+<meta property="og:description" content="Оренда нерухомості м.Одеса.">
+<meta property="og:url" content="{{OG_URL}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:image:secure_url" content="{{OG_IMAGE}}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="image_src" href="{{OG_IMAGE}}">
+
+<!-- Лого (без фона) -->
+<link rel="icon" href="https://i.ibb.co/FkNv1KGx/1.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/FkNv1KGx/1.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+<style>
+:root{--g:#0097B2;--r:#e94251;--txt:#0b1720}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Russo One',Arial,system-ui;background:#f5f7f6;color:var(--txt);-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden;touch-action:manipulation}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:10px 14px}
+
+/* Блокування фону під оверлеями */
+body.locked{position:fixed; inset:auto 0 0 0; width:100%; overflow:hidden; overscroll-behavior:none}
+
+/* SPLASH — одна картинка */
+#splash{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:60}
+#splash .logoWrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+#splash img{width:140px;height:auto;opacity:0;animation:fadeInOut 7s ease forwards;image-rendering:auto}
+#splash .city{opacity:0;color:var(--g);font-size:16px;animation:fadeInOut 7s ease .05s forwards}
+@keyframes fadeInOut{0%{opacity:0;transform:scale(.98)}15%{opacity:1;transform:none}85%{opacity:1}100%{opacity:0}}
+
+/* Header */
+header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.topbar{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}
+.logo img{width:44px;height:44px;border-radius:8px;object-fit:cover;image-rendering:auto}
+.pill{background:var(--g);color:#fff;border-radius:12px;padding:8px 14px;font-size:13px;min-width:160px;text-align:center}
+.btn{border:none;background:var(--g);color:#fff;border-radius:12px;padding:10px 16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,151,178,.25);font-family:inherit;transition:transform .12s ease, opacity .2s ease}
+.btn:active{transform:scale(.98)}
+.btn.plus{background:#fff;color:var(--g);border:3px solid var(--g);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:none}
+.btn.ghost{background:#fff;color:#0097B2;border:3px solid var(--g)}
+
+/* Banner */
+.banner{margin:8px 0;position:relative;overflow:hidden;transition:transform .28s ease, opacity .28s ease;will-change:transform,opacity}
+.banner a{display:block}
+.banner img{display:block;width:100%;height:170px;object-fit:cover;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,.08);transform:translateZ(0);image-rendering:auto}
+@media(max-width:760px){ .banner img{height:auto;background:transparent} }
+.banner.min{transform:translateY(-120%);opacity:0}
+.ad-under{display:flex;justify-content:flex-end;margin-top:6px}
+.ad-under a{font-size:12px;background:#fff;border-radius:8px;padding:4px 8px;box-shadow:0 6px 12px rgba(0,0,0,.06)}
+
+/* Sections */
+.hsec{display:flex;align-items:center;gap:8px;color:#fff;padding:8px 14px;border-radius:12px;margin:12px 0;box-shadow:0 6px 14px rgba(0,0,0,.06)}
+.hsec svg{width:18px;height:18px;fill:#fff}
+.hsec.top{background:linear-gradient(90deg,#ff4d4d,#ff7a1a)}
+.hsec.new{background:var(--g)}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Cards */
+.card{background:#fff;border-radius:16px;padding:12px;position:relative;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.06);transition:transform .12s ease, box-shadow .2s ease, opacity .2s ease;display:flex;flex-direction:column;will-change:transform,opacity}
+.card.fade{opacity:0;transform:translateY(8px)}
+.card.show{opacity:1;transform:none}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(0,0,0,.08)}
+/* квадратні прев’ю */
+.card .ph{position:relative;border-radius:10px;overflow:hidden;background:#eaf7fb;color:#59b8cc;width:100%; aspect-ratio:1/1; flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;image-rendering:auto}
+.badge-hot{position:absolute;right:12px;top:12px;background:linear-gradient(90deg,#ff4d4d,#ff2d6f);color:#fff;border-radius:12px;padding:4px 10px;font-size:12px;z-index:3}
+.card .ttl{margin-top:10px;line-height:1.15;font-size:14px;word-break:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.priceTag{position:absolute;right:10px;bottom:10px;background:var(--g);color:#fff;border:none;border-radius:16px;padding:6px 12px;box-shadow:0 8px 18px rgba(0,151,178,.25);font-family:inherit;z-index:3;pointer-events:none}
+
+/* Modal */
+dialog{border:none;border-radius:16px;padding:0;width:96%;max-width:980px}
+dialog::backdrop{background:rgba(0,0,0,.68)}
+#modalBox{border-radius:16px;background:#fff;overflow:auto;max-height:90vh;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:opacity .2s ease}
+.modHead{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #edf3f0}
+.modTitle{flex:1}
+/* Крестик */
+.closeX{border:none;background:transparent;color:#0097B2;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;cursor:pointer;outline:none;box-shadow:none}
+.closeX:focus{outline:none;box-shadow:none}
+
+/* Carousel (detail) */
+.carousel{position:relative;border-bottom:1px solid #edf3f0;background:#000}
+#carStage{position:relative;height:520px;max-height:52vh}
+#carStage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease;pointer-events:none;image-rendering:auto}
+#carStage img.show{opacity:1}
+.navbtn{position:absolute;top:50%;transform:translateY(-50%);background:transparent;color:#fff;border:none;width:auto;height:auto;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;line-height:1;padding:6px 10px;user-select:none;z-index:5}
+.navbtn.left{left:10px}.navbtn.right{right:10px}
+#carCount{position:absolute;right:10px;bottom:10px;background:#000b;color:#fff;border-radius:10px;padding:4px 8px;font-size:12px;z-index:4}
+.statOverlay{position:absolute;right:10px;top:10px;display:flex;gap:8px;z-index:6}
+.statLeft{position:absolute;left:10px;top:10px;display:flex;gap:8px;z-index:6}
+.pillStat{display:inline-flex;align-items:center;gap:8px;border-radius:18px;padding:6px 10px;box-shadow:0 6px 14px rgba(0,0,0,.25);font-family:'Russo One',Arial,system-ui;background:var(--g);color:#fff}
+.pillStat svg{width:16px;height:16px;fill:#fff}
+.pillStat b{font-family:'Russo One',Arial,system-ui;font-size:14px}
+
+/* Кнопка «оригинал» влево внизу */
+.openFull{position:absolute;left:10px;bottom:10px;background:#fff;color:#000;border:none;border-radius:10px;padding:6px 8px;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.35);z-index:4;cursor:pointer}
+.openFull svg{width:18px;height:18px;display:block;}
+
+/* Полноэкранный просмотр оригиналов */
+#fullBox{position:fixed;inset:0;background:#000e;display:none;align-items:center;justify-content:center;z-index:200}
+#fullInner{position:relative;max-width:96vw;max-height:92vh}
+#fullImg{max-width:96vw;max-height:92vh;width:auto;height:auto;display:block;border-radius:8px;image-rendering:auto;object-fit:contain}
+#fullCount{position:absolute;right:10px;bottom:10px;background:#000b;color:#fff;border-radius:10px;padding:4px 8px;font-size:12px}
+#fullClose{position:fixed;top:14px;right:14px}
+#fullLeft{position:fixed;left:10px;top:50%;transform:translateY(-50%)}
+#fullRight{position:fixed;right:10px;top:50%;transform:translateY(-50%)}
+
+/* Тело модалки */
+.modBody{padding:14px}
+#modDesc{white-space:pre-wrap; word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#eaf7fb;color:#0b1720;border-radius:12px;padding:10px 12px}
+
+/* Overlays */
+#chooser,#addForm,#searchBox,#supportBox,#payBox{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;touch-action:none}
+#chooser,#addForm,#searchBox,#payBox{z-index:50}
+#supportBox{z-index:70}
+.chooseBox{position:relative;width:90%;max-width:420px;background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:center;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.chooseBtn{width:100%;padding:16px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.06);font-family:inherit}
+.chooseBtn.green{background:var(--g);color:#fff}
+.chooseBtn.red{background:linear-gradient(90deg,#ff4d4d,#ff2d6f);color:#fff}
+
+/* Form */
+.formBox.scrollable{width:92%;max-width:640px;max-height:90vh;overflow:auto;background:#fff;border-radius:16px;padding:0 16px 16px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.formTop{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 0 8px;margin-bottom:10px;z-index:1;border-bottom:1px solid #edf3f0}
+.badgeSmall{background:var(--g);color:#fff;border-radius:10px;padding:6px 10px;cursor:pointer}
+.badgeSmall.gray{background:#eaf7fb;color:#0b1720}
+.formActions{display:flex;gap:8px;align-items:center}
+
+/* Прев’ю у формі */
+.imagePh{border-radius:12px;min-height:220px;margin:8px 0;overflow:hidden;background:#000;position:relative}
+.addCar-stage{position:relative;width:100%;height:380px;max-height:48vh}
+.addCar-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s ease;image-rendering:auto}
+.addCar-stage img.show{opacity:1}
+.addCar-nav{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+.addCar-btn{pointer-events:auto;background:transparent;border:none;color:#fff;font-size:34px;line-height:1;padding:10px;user-select:none}
+.addCar-count{position:absolute;right:10px;bottom:10px;background:#000b;color:#fff;border-radius:10px;padding:4px 8px;font-size:12px}
+.addCar-main{position:absolute;left:10px;top:10px;background:#000b;color:#fff;border-radius:8px;padding:4px 8px;font-size:12px}
+
+/* Inputs */
+.imagePh img.main{outline:3px solid var(--g)}
+.inp{background:var(--g);color:#fff;border:none;border-radius:12px;padding:12px 14px;width:100%;margin-top:10px;caret-color:#fff;font-family:inherit}
+.inprow{display:grid;grid-template-columns:1fr;gap:10px}
+::placeholder{color:#fff;opacity:.9}
+.btnPub{width:100%;margin-top:14px;border-radius:12px;font-family:inherit}
+
+/* Search */
+#searchBox{align-items:flex-start}
+.searchInner.scrollable{background:#fff;border-radius:16px;padding:12px;width:92%;max-width:700px;display:flex;flex-direction:column;gap:10px;box-shadow:0 18px 40px rgba(0,0,0,.28);margin:14px auto;max-height:80vh;overflow:auto}
+.searchRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.searchInner input, .searchInner select{border:2px solid #d8eef4;border-radius:12px;padding:12px 14px;font-family:inherit;background:#fff}
+.searchInner .actions{display:flex;gap:8px;justify-content:flex-end}
+.searchInner .btn{padding:10px 16px}
+
+/* Support */
+.supInner.scrollable{background:#fff;border-radius:16px;padding:16px;width:92%;max-width:520px;box-shadow:0 18px 40px rgba(0,0,0,.28);position:relative;max-height:85vh;overflow:auto}
+.supInner .closeX{position:absolute;right:12px;top:12px}
+
+/* Pay */
+.copy{cursor:pointer;border:2px solid #d8eef4;border-radius:8px;padding:6px 8px;font-size:13px;user-select:none}
+.payInner.scrollable{background:#fff;border-radius:16px;padding:12px 16px 20px;width:92%;max-width:560px;box-shadow:0 18px 40px rgba(0,0,0,.28);position:relative;max-height:85vh;overflow:auto}
+.payHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.payRight{display:flex;gap:8px;align-items:center}
+.payRow{display:grid;grid-template-columns:140px 1fr;gap:10px;margin:8px 0;padding:10px;border:2px solid #d8eef4;border-radius:12px;align-items:center}
+.payBtn{width:100%;margin-top:12px}
+
+/* Footer */
+footer{padding:18px 0;margin-top:20px;color:#0b1720a0;text-align:center}
+.tagline{margin-top:6px;color:#0097B2}
+
+/* ===== Global Loader Overlay ===== */
+#loaderOverlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:90;backdrop-filter:saturate(120%) blur(1px)}
+.loaderInner{display:flex;flex-direction:column;align-items:center;gap:14px}
+.loaderLogo{width:120px;height:120px;opacity:.92;animation:logoPulse 1.2s ease-in-out infinite}
+@keyframes logoPulse{0%{transform:scale(.98);opacity:.7}50%{transform:scale(1);opacity:1}100%{transform:scale(.98);opacity:.7}}
+
+/* Плаваюча вкладка підтримки (справа) — по умолчанию скрыта */
+#supportTab{position:fixed;right:-18px;bottom:22px;z-index:80;display:none;transition:right .25s ease, transform .25s ease}
+#supportTab img{display:block;width:64px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));image-rendering:auto}
+#supportTab:hover{right:0;transform:translateX(-4px)}
+
+/* Anti-zoom on dblclick */
+img{ -webkit-user-drag:none; user-select:none; -webkit-tap-highlight-color:transparent; touch-action:manipulation }
+</style>
+</head>
+<body>
+<!-- SPLASH -->
+<div id="splash" aria-hidden="true">
+  <div class="logoWrap">
+    <img src="https://i.ibb.co/FkNv1KGx/1.png" alt="ХАТА©">
+    <div class="city">Оренда нерухомості м.Одеса</div>
+  </div>
+</div>
+
+<!-- Global Loader -->
+<div id="loaderOverlay">
+  <div class="loaderInner">
+    <img class="loaderLogo" src="https://i.ibb.co/FkNv1KGx/1.png" alt="loading">
+  </div>
+</div>
+
+<!-- Плаваюча вкладка підтримки -->
+<a id="supportTab" href="javascript:void(0)" aria-label="Підтримка">
+  <img src="https://i.ibb.co/Nn6LRrJN/2-1.png" alt="Підтримка">
+</a>
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="logo" aria-label="ХАТА">
+        <img src="https://i.ibb.co/FkNv1KGx/1.png" alt="ХАТА©">
+      </div>
+      <div><span id="visitors" class="pill">27369 відвідувачів</span></div>
+      <button class="btn plus" id="btnPlus" aria-label="Додати">+</button>
+      <button class="btn" id="btnSearch">ПОШУК</button>
+    </div>
+
+    <div id="banner" class="banner">
+      <a id="bannerLink" href="#" target="_blank" rel="noopener">
+        <img id="bannerImg" src="" alt="banner" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      </a>
+    </div>
+    <div class="ad-under"><a href="#" id="bannerOrder">Замовити рекламу</a></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hsec top">
+    <svg viewBox="0 0 24 24"><path d="M12 2c2 3 6 5.5 6 10.2A6 6 0 0 1 6 12.2C6 8 9 5 11 3.2c-.2 2.1.8 3.5 2.5 4.8C14 6.5 13 4.2 12 2Z"/></svg>
+    <span>ТОП пропозицій</span>
+  </div>
+  <div id="hotGrid" class="grid"></div>
+
+  <div class="hsec new">Нові оголошення</div>
+  <div id="listGrid" class="grid"></div>
+  <div style="display:flex;justify-content:center;margin:18px 0">
+    <button id="btnMore" class="btn" style="background:#fff;color:var(--g);border:2px solid var(--g)">Показати ще</button>
+  </div>
+</main>
+
+<footer>
+  <div>©ХАТА, 2025</div>
+  <div class="tagline">Оренда нерухомості м.Одеса</div>
+</footer>
+
+<!-- DETAIL -->
+<dialog id="dlgDetail">
+  <div id="modalBox" class="scrollable">
+    <div class="modHead">
+      <div class="modTitle" id="modTitle">ОГОЛОШЕННЯ</div>
+      <button class="closeX" id="closeDetail" title="Закрити">✕</button>
+    </div>
+    <div class="carousel">
+      <div class="statLeft"><div class="pillStat" id="priceTop"></div></div>
+      <div class="statOverlay">
+        <div class="pillStat" title="Перегляди">
+          <svg viewBox="0 0 24 24"><path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/></svg>
+          <b id="vNum">0</b>
+        </div>
+        <button class="pillStat" id="likeTop" style="border:none;cursor:pointer" title="Лайк">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.35-10-8.5C.5 8.5 3 5 6.5 5 8.7 5 10 6.2 12 8c2-1.8 3.3-3 5.5-3 3.5 0 6 3.5 4.5 7.5C19.5 16.7 12 21 12 21Z"/></svg>
+          <b id="lNum">0</b>
+        </button>
+      </div>
+
+      <button class="navbtn left" id="navLeft" aria-label="Попереднє">‹</button>
+      <div id="carStage"></div>
+      <div id="carCount">1/1</div>
+      <button class="navbtn right" id="navRight" aria-label="Наступне">›</button>
+
+      <!-- Кнопка «Открыть оригинал» -->
+      <button class="openFull" id="openFullBtn" title="Відкрити оригінал">
+        <!-- иконка «expand» -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 10V4h6M14 20h6v-6M20 8V4h-4M4 20h4v-4"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Полноэкранный просмотр оригиналов -->
+    <div id="fullBox">
+      <button class="closeX" id="fullClose" title="Закрити">✕</button>
+      <button class="navbtn left" id="fullLeft" aria-label="Попереднє">‹</button>
+      <div id="fullInner">
+        <img id="fullImg" alt="" referrerpolicy="no-referrer" loading="eager" decoding="async">
+        <div id="fullCount">1/1</div>
+      </div>
+      <button class="navbtn right" id="fullRight" aria-label="Наступне">›</button>
+    </div>
+
+    <div class="modBody">
+      <div id="modDesc" style="margin-bottom:12px;"></div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</dialog>
+
+<!-- CHOOSER -->
+<div id="chooser"><div class="chooseBox" id="chooseBox">
+  <button class="chooseBtn green" id="chooseNormal">Звичайне оголошення — 39 грн / 30 днів</button>
+  <button class="chooseBtn red" id="chooseHot">HOT оголошення — 299 грн / 30 днів</button>
+</div></div>
+
+<!-- ADD FORM -->
+<div id="addForm"><div class="formBox scrollable" id="addInner">
+  <div class="formTop">
+    <div class="badgeSmall" id="btnAddPhoto">Додати фото</div>
+    <div class="formActions">
+      <div id="hotBadge" class="badgeSmall" style="background:#e94251;display:none">HOT</div>
+      <button class="closeX" id="closeAdd" title="Закрити">✕</button>
+    </div>
+  </div>
+
+  <!-- Карусель прев’ю у формі -->
+  <div class="imagePh" id="imgPh">
+    <div class="addCar-stage" id="addStage"></div>
+    <div class="addCar-nav">
+      <button class="addCar-btn" id="addPrev" aria-label="Попереднє">‹</button>
+      <button class="addCar-btn" id="addNext" aria-label="Наступне">›</button>
+    </div>
+    <div class="addCar-main" id="addMainBadge" style="display:none">Головне фото</div>
+    <div class="addCar-count" id="addCount" style="display:none">0/0</div>
+  </div>
+  <input type="file" id="f_imgs" accept="image/*" multiple hidden>
+
+  <div id="adFields">
+    <input class="inp" id="f_title" placeholder="Заголовок">
+    <div class="inprow">
+      <input class="inp" id="f_price" placeholder="Ціна/місяць, грн">
+    </div>
+    <div class="inprow">
+      <input class="inp" id="f_district" placeholder="Район (Київський, Приморський, Пересипський, Хаджибейський)">
+    </div>
+    <div class="inprow">
+      <select class="inp" id="f_kind" style="appearance:none">
+        <option value="">Тип: квартира/будинок/комерційна</option>
+        <option value="квартира">Квартира</option>
+        <option value="будинок">Будинок</option>
+        <option value="комерційна">Комерційна</option>
+      </select>
+    </div>
+    <div class="inprow">
+      <input class="inp" id="f_rooms" placeholder="Кількість кімнат (1-6)">
+    </div>
+    <div class="inprow">
+      <input class="inp" id="f_phone" placeholder="+380">
+    </div>
+    <textarea class="inp" id="f_desc" placeholder="Опис" rows="4" style="height:110px"></textarea>
+  </div>
+
+  <div id="bannerHint" style="display:none;color:#0b1720a0;margin-top:8px">Додайте картинку реклами <b>1200×200</b>.(1шт)</div>
+  <button class="btn btnPub" id="btnPay">Опублікувати</button>
+</div></div>
+
+<!-- SEARCH (без крестика) -->
+<div id="searchBox"><div class="searchInner scrollable" id="searchInner">
+  <div class="searchRow">
+    <select id="filt_district">
+      <option value="">Район — будь-який</option>
+      <option>Київський</option>
+      <option>Приморський</option>
+      <option>Пересипський</option>
+      <option>Хаджибейський</option>
+    </select>
+    <select id="filt_price">
+      <option value="">Ціна/місяць — будь-яка</option>
+      <option value="10000">до 10000</option>
+      <option value="15000">до 15000</option>
+      <option value="20000">до 20000</option>
+      <option value="25000">до 25000</option>
+      <option value="30000">до 30000</option>
+      <option value="30000+">вище 30000</option>
+    </select>
+  </div>
+  <div class="searchRow">
+    <select id="filt_kind">
+      <option value="">Тип — будь-який</option>
+      <option value="квартира">Квартира</option>
+      <option value="будинок">Будинок</option>
+      <option value="комерційна">Комерційна</option>
+    </select>
+    <select id="filt_rooms">
+      <option value="">Кількість кімнат</option>
+      <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+    </select>
+  </div>
+  <input id="q" placeholder="Код, телефон, заголовок чи опис...">
+  <div class="actions">
+    <button class="btn ghost" id="resetFilt">Скинути</button>
+    <button class="btn" id="go">Пошук</button>
+  </div>
+</div></div>
+
+<!-- SUPPORT -->
+<div id="supportBox"><div class="supInner scrollable">
+  <button class="closeX" id="closeSupport" title="Закрити">✕</button>
+  <h3 style="margin:8px 0 8px 0">ПІДТРИМКА</h3>
+  <input class="inp" id="s_name" placeholder="Ім'я">
+  <input class="inp" id="s_phone" placeholder="+380">
+  <textarea class="inp" id="s_msg" placeholder="Опишіть проблему" rows="4" style="height:110px"></textarea>
+  <button class="btn" id="s_send" style="width:100%;margin-top:10px">Надіслати</button>
+</div></div>
+
+<!-- PAY -->
+<div id="payBox"><div class="payInner scrollable">
+  <div class="payHead">
+    <div style="font-size:18px">Оплата</div>
+    <div class="payRight">
+      <button class="btn ghost" id="btnSupportPay" title="Підтримка" style="height:36px;padding:6px 10px">ПІДТРИМКА</button>
+      <button class="closeX" id="closePay" title="Закрити">✕</button>
+    </div>
+  </div>
+
+  <div id="payLines" style="font-size:14px;margin-bottom:8px"></div>
+  <div class="payRow"><div>Картка</div><div id="cardNum" class="copy" title="Скопіювати">5168 7451 9757 8328</div></div>
+  <div class="payRow"><div>Сума</div><div id="amt">0</div></div>
+  <div class="payRow"><div>Призначення</div><div id="purpose" class="copy" title="Скопіювати" style="white-space:normal"></div></div>
+
+  <button class="btn payBtn" id="goPrivat">Сплатити</button>
+  <div style="font-size:12px;color:#0b1720aa;margin-top:8px">Обов'язково вкажіть номер оголошення у призначенні платежу.</div>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.5/dist/socket.io.min.js"></script>
+<script>
+const SERVER = 'https://intensity-administrative-specify-scholarship.trycloudflare.com';
+const $ = s=>document.querySelector(s);
+
+/* ======= Повне блокування масштабування ======= */
+(function(){
+  addEventListener('wheel', e=>{ if(e.ctrlKey){ e.preventDefault(); } }, {passive:false});
+  ['gesturestart','gesturechange','gestureend'].forEach(ev=>{
+    addEventListener(ev, e=>{ e.preventDefault(); }, {passive:false});
+  });
+  addEventListener('keydown', e=>{
+    if((e.ctrlKey||e.metaKey) && ['+','=','-','0'].includes(e.key)){ e.preventDefault(); }
+  });
+  addEventListener('dblclick', e=>{ e.preventDefault(); }, {passive:false});
+  let lastTouchEnd=0;
+  addEventListener('touchend', e=>{
+    const now=Date.now();
+    if(now-lastTouchEnd<=300){ e.preventDefault(); }
+    lastTouchEnd=now;
+  }, {passive:false});
+})();
+
+/* ======= Блокування скролу фону ======= */
+let LOCKY=0;
+function anyOverlayOpen(){
+  return ['chooser','addForm','searchBox','supportBox','payBox'].some(id=>document.getElementById(id).style.display==='flex')
+         || ($('#dlgDetail') && $('#dlgDetail').open)
+         || ($('#fullBox') && $('#fullBox').style.display==='flex');
+}
+function canScrollInside(el){
+  const sc = el.closest('.scrollable');
+  if(!sc) return false;
+  return sc.scrollHeight > sc.clientHeight;
+}
+function preventScroll(e){
+  if(!anyOverlayOpen()) return;
+  if(canScrollInside(e.target)) return;
+  e.preventDefault();
+}
+function lock(){
+  LOCKY = window.scrollY || 0;
+  document.body.style.top = `-${LOCKY}px`;
+  document.body.classList.add('locked');
+  addEventListener('wheel', preventScroll, {passive:false});
+  addEventListener('touchmove', preventScroll, {passive:false});
+  refreshSupportTab(); // прячем таб при любом локе
+}
+function unlock(){
+  document.body.classList.remove('locked');
+  removeEventListener('wheel', preventScroll);
+  removeEventListener('touchmove', preventScroll);
+  const y = LOCKY||0;
+  document.body.style.top = '';
+  window.scrollTo(0, y);
+  refreshSupportTab();
+}
+document.documentElement.style.overscrollBehavior='none';
+
+/* Splash */
+lock();
+setTimeout(()=>{ const sp=$('#splash'); if(sp){ sp.style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); } },7000);
+
+/* ===== Global Loader control ===== */
+const loader = $('#loaderOverlay');
+function splashVisible(){ const sp=$('#splash'); return sp && sp.style.display!=='none'; }
+function showLoader(on=true){
+  if(!loader) return;
+  if(on && splashVisible()){ loader.style.display='none'; return; }
+  loader.style.display = on?'flex':'none';
+}
+
+/* ===== Плавающий таб поддержки: показывать только на главной ===== */
+function refreshSupportTab(){
+  const tab = $('#supportTab');
+  if(!tab) return;
+  const visible = !splashVisible() && !anyOverlayOpen();
+  tab.style.display = visible ? 'block' : 'none';
+  if(visible){ tab.style.right='-18px'; tab.style.transform=''; }
+}
+refreshSupportTab();
+
+/* socket: форсируем polling */
+const uidLocal = localStorage.getItem('kolo_uid') || (localStorage.setItem('kolo_uid','u_'+Math.random().toString(36).slice(2)), localStorage.getItem('kolo_uid'));
+const socket = io(SERVER,{transports:['polling'],auth:{uid:uidLocal}});
+
+/* helper: лог подій */
+async function logEv(action, extra={}){ try{ await fetch(SERVER+'/api/log',{method:'POST',headers:{'Content-Type':'application/json','X-KOLO-UID':uidLocal},body:JSON.stringify({action, extra, ts:Date.now()})}); }catch(e){} }
+
+/* banner collapse */
+const bannerEl = $('#banner');
+let lastY=0, ticking=false;
+addEventListener('scroll', ()=>{ lastY = window.scrollY||0;
+  if(!ticking){
+    requestAnimationFrame(()=>{ if(lastY>80) bannerEl.classList.add('min'); else bannerEl.classList.remove('min'); ticking=false; });
+    ticking=true;
+}}, {passive:true});
+
+let ALL={hot:[],normal:[]}, page=1, ADD_TYPE='normal', CAR=[], idx=0, CUR=null;
+let bannerList=[], bannerIdx=0, bannerTimer=null;
+let lastPublished = null;
+const PAGE_SIZE = 20;
+
+/* visitors */
+let _visPend=null;
+socket.on('visitors', n=>{ _visPend=n; requestAnimationFrame(()=>{ if(_visPend!=null){ $('#visitors').textContent=_visPend+' відвідувачів'; _visPend=null; } }); });
+socket.on('banner', b=>{ setBanner(b); });
+
+/* initial load */
+(async()=>{
+  showLoader(true);
+  try{
+    const r = await fetch(SERVER+'/api/list'); const j = await r.json();
+    ALL=j.data||ALL; draw(true); setBanner(j.banner||{});
+  }catch(e){}
+  showLoader(false);
+  refreshSupportTab();
+})();
+
+/* banner rotator */
+function setBanner(b){
+  const imgEl = $('#bannerImg');
+  const linkEl = $('#bannerLink');
+  bannerList = (b && b.images && b.images.length)? b.images.slice() : (b && b.image?[b.image]:[]);
+  linkEl.href = (b && b.link) ? b.link : '#';
+  if(bannerTimer){ clearInterval(bannerTimer); bannerTimer=null; }
+  if(!bannerList.length){ imgEl.style.display='none'; return; }
+  bannerIdx = 0; imgEl.style.display='block'; imgEl.src = bannerList[bannerIdx];
+  imgEl.setAttribute('referrerpolicy','no-referrer');
+  if(bannerList.length>1){
+    bannerTimer = setInterval(()=>{ bannerIdx = (bannerIdx+1)%bannerList.length; imgEl.src = bannerList[bannerIdx]; }, 5000);
+  }
+}
+
+/* Preload перших зображень */
+function preloadLinks(urls, limit=12){
+  const head = document.head;
+  urls.slice(0,limit).forEach(u=>{
+    if(!u) return;
+    const l = document.createElement('link'); l.rel='preload'; l.as='image'; l.href=u; head.appendChild(l);
+  });
+}
+
+/* Cards/draw */
+function mkCard(ad, i){
+  const img = (ad.images && ad.images[0]) ? ad.images[0] : '';
+  const pr = i<12 ? 'fetchpriority="high" loading="eager" decoding="async"' : 'loading="lazy" decoding="async"';
+  return `<div class="card fade" onclick="openDetail('${ad.id}')">
+    <div class="ph">
+      ${ad.type==='hot'?'<div class="badge-hot">HOT</div>':''}
+      ${img?`<img src="${img}" ${pr} referrerpolicy="no-referrer" alt="">`:'ФОТО'}
+      <div class="priceTag">${(ad.price||0).toLocaleString('uk-UA')} ₴</div>
+    </div>
+    <div class="ttl">${(ad.title||'Оголошення').toUpperCase()}</div>
+  </div>`;
+}
+function draw(first=false){
+  const hot = (ALL.hot||[]);
+  const norm = (ALL.normal||[]);
+  const slice = norm.slice(0,page*PAGE_SIZE);
+  const firstImgs = [...hot.slice(0,6), ...slice.slice(0,12)]
+    .map(a=> (a.images&&a.images[0])?a.images[0]:'').filter(Boolean);
+  preloadLinks(firstImgs, 12);
+
+  $('#hotGrid').innerHTML = hot.map((a,i)=>mkCard(a,i)).join('');
+
+  if(first){
+    $('#listGrid').innerHTML = slice.map((a,i)=>mkCard(a,i)).join('');
+  }else{
+    const start = (page-1)*PAGE_SIZE;
+    const add = norm.slice(start, start+PAGE_SIZE);
+    $('#listGrid').insertAdjacentHTML('beforeend', add.map((a,i)=>mkCard(a, start+i)).join(''));
+  }
+  $('#btnMore').style.display = norm.length>slice.length ? 'inline-block':'none';
+
+  requestAnimationFrame(()=>{ document.querySelectorAll('.card.fade').forEach((c,k)=>{ setTimeout(()=>c.classList.add('show'), Math.min(200, k*12)); }); });
+}
+
+/* Carousel (detail) */
+function preloadImages(urls){ urls.forEach(u=>{ const im=new Image(); im.decoding='async'; im.loading='eager'; im.referrerPolicy='no-referrer'; im.src=u; }); }
+window.openDetail = (id)=>{
+  CUR = [...(ALL.hot||[]),...(ALL.normal||[])].find(a=>a.id===id); if(!CUR) return;
+  $('#modTitle').textContent = (CUR.title||'').toUpperCase();
+  $('#vNum').textContent = CUR.views||0; 
+  $('#lNum').textContent = CUR.likes||0;
+  $('#priceTop').textContent = ((CUR.price||0).toLocaleString('uk-UA'))+' ₴/міс';
+  $('#modDesc').textContent = CUR.desc||'';
+  $('#chips').innerHTML = [
+    'Код: '+(CUR.code||'00000'),
+    'Телефон: '+(CUR.phone||'+380'),
+    'Район: '+(CUR.district||'-'),
+    'Тип: '+(CUR.kind||'-'),
+    'Кімнат: '+(CUR.rooms||'-'),
+    'Дата публікації: '+(new Date().toLocaleDateString('uk-UA')),
+  ].map(t=>`<div class="chip">${t}</div>`).join('');
+
+  CAR=(CUR.images&&CUR.images.length)?CUR.images.slice(0,50):['https://picsum.photos/seed/1/1200/800']; 
+  preloadImages(CAR);
+  idx=0; renderCar(true);
+  const dlg=$('#dlgDetail'); dlg.showModal(); lock();
+  dlg.addEventListener('click', e=>{ if(e.target===dlg){ dlg.close(); if(!anyOverlayOpen()) unlock(); }},{once:true});
+  refreshSupportTab(); // скрыть таб поддержки в деталке
+
+  fetch(SERVER+`/api/view/${encodeURIComponent(CUR.id)}`,{method:'POST',headers:{'X-KOLO-UID':uidLocal}});
+  CUR.views = (CUR.views||0)+1; $('#vNum').textContent=CUR.views;
+
+  logEv('open_detail',{id:CUR.id, code:CUR.code});
+};
+$('#closeDetail').onclick=()=>{ $('#dlgDetail').close(); if(!anyOverlayOpen()) unlock(); refreshSupportTab(); };
+
+/* Disable image dblclick zoom */
+addEventListener('dblclick', (e)=>{ if(e.target && e.target.tagName==='IMG'){ e.preventDefault(); } }, {passive:false});
+
+function renderCar(initial=false){
+  const st = $('#carStage');
+  if(initial){
+    st.innerHTML = CAR.map((u,i)=>`<img src="${u}" class="${i===0?'show':''}" alt="" referrerpolicy="no-referrer" loading="eager" decoding="async">`).join('');
+  } else {
+    [...st.querySelectorAll('img')].forEach((im,i)=>im.classList.toggle('show', i===idx));
+  }
+  $('#carCount').textContent = `${idx+1}/${CAR.length}`;
+  $('#navLeft').style.display = $('#navRight').style.display = (CAR.length>1)?'flex':'none';
+}
+window.car = d=>{ idx=(idx+d+CAR.length)%CAR.length; renderCar(false); logEv('carousel_nav',{idx}); };
+$('#navLeft').onclick=()=>window.car(-1);
+$('#navRight').onclick=()=>window.car(1);
+
+/* ===== Полноэкранный просмотр оригиналов ===== */
+let fullIdx = 0;
+function updateFull(){
+  const im = $('#fullImg');
+  im.src = CAR[fullIdx] || '';
+  $('#fullCount').textContent = `${fullIdx+1}/${CAR.length}`;
+  $('#fullLeft').style.display = $('#fullRight').style.display = (CAR.length>1)?'flex':'none';
+}
+function openFull(){
+  if(!CAR || !CAR.length) return;
+  fullIdx = idx; // стартуем с текущего кадра карусели
+  $('#fullBox').style.display='flex';
+  updateFull();
+  lock();
+  refreshSupportTab(); // таб поддержки прячем
+}
+function closeFull(){
+  $('#fullBox').style.display='none';
+  if(!anyOverlayOpen()) unlock();
+  refreshSupportTab();
+}
+function navFull(d){ fullIdx=(fullIdx+d+CAR.length)%CAR.length; updateFull(); }
+
+$('#openFullBtn').onclick = ()=> openFull();
+$('#fullClose').onclick = ()=> closeFull();
+$('#fullLeft').onclick = ()=> navFull(-1);
+$('#fullRight').onclick = ()=> navFull(1);
+
+/* like */
+$('#likeTop').onclick = async (e)=>{
+  e.stopPropagation();
+  if(!CUR) return;
+  try{
+    const j = await fetch(SERVER+`/api/like/${encodeURIComponent(CUR.id)}`,{
+      method:'POST', headers:{'X-KOLO-UID':uidLocal,'Content-Type':'text/plain'}
+    }).then(r=>r.json());
+    if(j && j.likes!==undefined){ $('#lNum').textContent=j.likes; CUR.likes=j.likes; }
+    logEv('like_click',{id:CUR.id});
+  }catch(e){}
+};
+
+/* chooser/add */
+function showChooser(){ $('#chooser').style.display='flex'; lock(); logEv('open_chooser'); refreshSupportTab(); }
+function hideChooser(){ $('#chooser').style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); }
+function resetAddForm(){
+  chosenFiles=[]; addIdx=0; renderAddCarousel();
+  ['f_title','f_price','f_district','f_phone','f_desc','f_rooms'].forEach(id=>{ const el=$('#'+id); if(el) el.value=''; });
+  $('#f_kind').value=''; $('#f_imgs').value='';
+}
+function showAdd(){
+  $('#addForm').style.display='flex'; lock();
+  $('#hotBadge').style.display = ADD_TYPE==='hot'?'inline-block':'none';
+  const isBanner = (ADD_TYPE==='banner');
+  $('#adFields').style.display = isBanner?'none':'block';
+  $('#bannerHint').style.display = isBanner?'block':'none';
+  refreshSupportTab();
+}
+function hideAdd(){ $('#addForm').style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); }
+$('#chooser').addEventListener('click',e=>{ if(e.target.id==='chooser') hideChooser(); });
+$('#addForm').addEventListener('click',e=>{ if(e.target.id==='addForm') hideAdd(); });
+$('#closeAdd').onclick=hideAdd;
+
+$('#btnPlus').onclick=showChooser;
+$('#chooseNormal').onclick=()=>{ADD_TYPE='normal'; hideChooser(); resetAddForm(); showAdd(); logEv('choose_normal');}
+$('#chooseHot').onclick=()=>{ADD_TYPE='hot'; hideChooser(); resetAddForm(); showAdd(); logEv('choose_hot');}
+$('#bannerOrder').onclick=(e)=>{ e.preventDefault(); ADD_TYPE='banner'; resetAddForm(); showAdd(); logEv('choose_banner'); };
+
+/* photos preview */
+let chosenFiles=[]; let addIdx=0; const fInput = $('#f_imgs');
+function fileKey(f){ return `${f.name}_${f.size}_${f.lastModified}`; }
+function renderAddCarousel(){
+  const stage = $('#addStage');
+  stage.innerHTML = chosenFiles.map((f,i)=>{ const url = URL.createObjectURL(f); return `<img src="${url}" class="${i===addIdx?'show':''}" alt="">`; }).join('');
+  const has = chosenFiles.length>0;
+  $('#addCount').style.display = has?'block':'none';
+  $('#addCount').textContent = has ? `${addIdx+1}/${chosenFiles.length}` : '0/0';
+  $('#addMainBadge').style.display = (has && addIdx===0)?'inline-block':'none';
+}
+$('#btnAddPhoto').onclick=()=>{ fInput.click(); logEv('click_add_photo'); };
+$('#imgPh').onclick=()=>fInput.click();
+fInput.onchange=()=>{ const limit=(ADD_TYPE==='banner')?1:9999;
+  const incoming=[...fInput.files];
+  const existingKeys = new Set(chosenFiles.map(fileKey));
+  for(const f of incoming){ if(chosenFiles.length>=limit) break; const k = fileKey(f); if(!existingKeys.has(k)){ chosenFiles.push(f); existingKeys.add(k); } }
+  if(addIdx>=chosenFiles.length) addIdx = Math.max(0, chosenFiles.length-1);
+  renderAddCarousel();
+};
+$('#addPrev').onclick=(e)=>{ e.stopPropagation(); if(!chosenFiles.length) return; addIdx=(addIdx-1+chosenFiles.length)%chosenFiles.length; renderAddCarousel(); };
+$('#addNext').onclick=(e)=>{ e.stopPropagation(); if(!chosenFiles.length) return; addIdx=(addIdx+1)%chosenFiles.length; renderAddCarousel(); };
+
+/* publish -> pending + лоадер */
+$('#btnPay').onclick=async ()=>{
+  const fd=new FormData();
+  fd.append('type', ADD_TYPE);
+  if(ADD_TYPE!=='banner'){
+    fd.append('title', ($('#f_title').value||'Оголошення'));
+    fd.append('price', ($('#f_price').value||0));
+    fd.append('district', ($('#f_district').value||'')); 
+    fd.append('kind', ($('#f_kind').value||'')); 
+    fd.append('rooms', ($('#f_rooms').value||'')); 
+    fd.append('desc', ($('#f_desc').value||'')); 
+    fd.append('phone', ($('#f_phone').value||'+380'));
+  }
+  const maxN = (ADD_TYPE==='banner')?1:9999;
+  chosenFiles.slice(0,maxN).forEach(f=>fd.append('images',f));
+
+  showLoader(true);
+  const j = await fetch(SERVER+'/api/create',{method:'POST',body:fd,headers:{'X-KOLO-UID':uidLocal}}).then(r=>r.json()).catch(()=>({}));
+  showLoader(false);
+
+  if(!(j && j.ok)){ alert('Сервер недоступний'); return; }
+  lastPublished = j;
+  openPayBox(j.kind, j.code, j.amount);
+  hideAdd();
+  logEv('publish_click',{kind:j.kind, code:j.code});
+};
+
+/* SEARCH */
+function showSearch(e){ if(e) e.preventDefault(); $('#searchBox').style.display='flex'; $('#q').focus({preventScroll:true}); lock(); logEv('open_search'); refreshSupportTab(); }
+function hideSearch(){ $('#searchBox').style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); }
+$('#searchBox').addEventListener('click',e=>{ if(e.target.id==='searchBox') hideSearch(); });
+$('#btnSearch').onclick=showSearch;
+const closeSearchBtn = $('#closeSearch'); if(closeSearchBtn){ closeSearchBtn.onclick=hideSearch; }
+$('#resetFilt').onclick=()=>{ ['filt_district','filt_price','filt_kind','filt_rooms','q'].forEach(id=>{const el=$('#'+id); el.value='';}); logEv('reset_filters'); };
+$('#go').onclick=async ()=>{
+  const params = new URLSearchParams();
+  const q = ($('#q').value||'').trim(); if(q) params.set('q', q);
+  const d = ($('#filt_district').value||'').trim(); if(d) params.set('district', d);
+  const band = ($('#filt_price').value||'').trim(); if(band) params.set('price_band', band);
+  const k = ($('#filt_kind').value||'').trim(); if(k) params.set('kind', k);
+  const r = ($('#filt_rooms').value||'').trim(); if(r) params.set('rooms', r);
+
+  hideSearch();
+  showLoader(true);
+  const j = await fetch(SERVER+'/api/search?'+params.toString()).then(r=>r.json()).catch(()=>null);
+  showLoader(false);
+
+  if(j && j.ok){ ALL=j.data; page=1; $('#listGrid').innerHTML=''; draw(true); }
+  logEv('search_submit', Object.fromEntries(params));
+};
+
+/* more */
+$('#btnMore').onclick=()=>{ page++; draw(false); logEv('click_more',{page}); };
+
+/* SUPPORT */
+function openSupport(fromPay=false){
+  $('#supportBox').style.display='flex';
+  if(!fromPay) lock();
+  refreshSupportTab();
+  logEv('open_support',{fromPay});
+}
+$('#closeSupport').onclick=()=>{ $('#supportBox').style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); logEv('close_support'); };
+$('#s_send').onclick=async ()=>{
+  const payload = {name:$('#s_name').value||'', phone:$('#s_phone').value||'', msg:$('#s_msg').value||''};
+  await fetch(SERVER+'/api/support',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  alert('Дякуємо! Звернення надіслано.');
+  $('#supportBox').style.display='none'; if(!anyOverlayOpen()) unlock();
+  refreshSupportTab();
+  logEv('support_send',payload);
+};
+/* кнопка підтримки в оплаті */
+const btnSupportPay = $('#btnSupportPay');
+if(btnSupportPay){ btnSupportPay.onclick = ()=> openSupport(true); }
+
+/* Плаваюча вкладка підтримки — клік відкриває підтримку */
+const supportTab = $('#supportTab');
+if(supportTab){
+  supportTab.addEventListener('click', ()=>{
+    supportTab.style.right = '0';
+    supportTab.style.transform = 'translateX(-4px)';
+    setTimeout(()=>openSupport(false), 120);
+  });
+}
+
+/* PAY BOX */
+function openPayBox(kind, code, amount){
+  const purp = (kind==='banner'?'Банер ':'') + (kind==='hot'?'HOT ':'Звичайне ') + 'оголошення №'+code;
+  $('#purpose').textContent = purp;
+  $('#amt').textContent = amount + (kind==='hot'?' грн (30 днів)': (kind==='banner'?' грн (7 днів)':' грн (30 днів)'));
+  $('#payLines').innerHTML = `Ваш номер: <b>№${code}</b>. Після оплати ми перевіримо платіж і опублікуємо.`;
+  $('#payBox').style.display='flex'; lock();
+  refreshSupportTab();
+  logEv('open_pay',{kind,code});
+}
+async function copyText(t){ try{ await navigator.clipboard.writeText(t); }catch{} }
+$('#cardNum').onclick=()=>{ copyText($('#cardNum').textContent.trim()); logEv('copy_card'); };
+$('#purpose').onclick=()=>{ copyText($('#purpose').textContent.trim()); logEv('copy_purpose'); };
+$('#closePay').onclick=()=>{ $('#payBox').style.display='none'; if(!anyOverlayOpen()) unlock(); refreshSupportTab(); logEv('close_pay'); };
+
+/* Privat24 — лоадер на переход */
+$('#goPrivat').onclick=async ()=>{
+  if(!lastPublished) return;
+  showLoader(true);
+  await fetch(SERVER+'/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lastPublished)}).catch(()=>{});
+  await copyText($('#cardNum').textContent.trim());
+  const url = 'https://www.privat24.ua/send/3g9dp';
+  const w = window.open(url,'_blank'); if(!w){ window.location.href = url; }
+  setTimeout(()=>showLoader(false), 1200);
+  logEv('go_privat',{code:lastPublished.code});
+};
+</script>
+</body>
+</html>
